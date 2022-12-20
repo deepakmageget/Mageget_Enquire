@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageget_Enquire route xml
+ *
+ * @category    Mageget
+ * @package     Mageget_Enquire
+ * @author      Mageget Software Private Limited
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="enquire" frontName="enquire">
+            <module name="Mageget_Enquire" />
+        </route>
+    </router>
+</config>

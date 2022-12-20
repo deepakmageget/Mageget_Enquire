@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+    <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_enquire">
+        <observer name="mageget_enquire_disable" instance="Mageget\Enquire\Observer\DisableOutput" />
+    </event>
+    <event name="admin_system_config_changed_section_slider">
+        <observer name="mageget_slider_disable" instance="Mageget\Slider\Observer\DisableOutput" />
+    </event>
+</config>

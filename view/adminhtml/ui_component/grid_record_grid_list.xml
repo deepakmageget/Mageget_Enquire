@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Grid record list UI Component
+ * @category  Mageget
+ * @package   Mageget_Enquire
+ * @author    Mageget
+ * @copyright Copyright (c) 2010-2022 Mageget Software Private Limited 
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">grid_record_grid_list.grid_record_grid_list_data_source</item>
+            <item name="deps" xsi:type="string">grid_record_grid_list.grid_record_grid_list_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">grid_records_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Row</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">enquire/grid/addrow</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="grid_record_grid_list_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">grid_record_grid_list_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument> 
+    </dataSource>
+  <listingToolbar name="listing_top">
+	<!-- ... other block of code -->    
+       <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">grid_record_grid_list.grid_record_grid_list.grid_records_columns.ids</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+            <!-- Mass actions which you want to add in your grid-->
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="enquire/grid/massdelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete</item>
+                            <item name="message" xsi:type="string" translate="true">Do you want to delete selected row record?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+	<filters name="listing_filters" />
+      <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+    </listingToolbar>
+    <columns name="grid_records_columns">
+        <selectionsColumn name="ids">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="indexField" xsi:type="string">id</item>
+                   <item name="sorting" xsi:type="string">desc</item>
+                   <item name="sortOrder" xsi:type="number">0</item>
+               </item>
+           </argument>
+       </selectionsColumn>
+ 
+       <column name="name" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">text</item>
+                   <item name="label" xsi:type="string" translate="true">name</item> 
+                   <item name="sortOrder" xsi:type="number">20</item>
+               </item>
+           </argument>
+       </column>
+          <column name="email" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">true</item>
+                   <item name="label" xsi:type="string" translate="true">email</item> 
+                   <item name="sortOrder" xsi:type="number">40</item>
+               </item>
+           </argument>
+       </column>
+       
+       <column name="phonenumber">
+          <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">true</item>
+                <item name="label" xsi:type="string" translate="true">phone number</item>
+                <item name="sortOrder" xsi:type="number">60</item>
+               </item>
+           </argument>
+       </column> 
+           <column name="dob">
+          <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                <item name="filter" xsi:type="string">true</item>
+                <item name="label" xsi:type="string" translate="true">Date Of Birth</item> 
+                <item name="sortOrder" xsi:type="number">80</item>
+               </item>
+           </argument>
+       </column>
+
+<column name="upload_file" component="Magento_Ui/js/grid/columns/thumbnail" class="Mageget\Enquire\Ui\Component\Listing\Grid\Column\Image">
+    <settings>
+        <label translate="true">Image</label>
+        <hasPreview>1</hasPreview>
+        <sortable>false</sortable>
+    </settings> 
+    
+</column>
+       
+     <!-- <column name="status" >
+           <argument name="data" xsi:type="array">
+               <item name="options" xsi:type="object">Mageget\Enquire\Model\Status</item>
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">select</item>
+                   <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                   <item name="dataType" xsi:type="string">select</item>
+                   <item name="label" xsi:type="string" translate="true">status</item>
+               </item>
+           </argument>
+       </column>
+       <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">dateRange</item>
+                   <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                   <item name="dataType" xsi:type="string">date</item>
+                   <item name="label" xsi:type="string" translate="true">Created At</item>
+               </item>
+           </argument>
+       </column> 
+         <column name="update_time" class="Magento\Ui\Component\Listing\Columns\Date" >
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="filter" xsi:type="string">dateRange</item>
+                   <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                   <item name="dataType" xsi:type="string">date</item>
+                   <item name="label" xsi:type="string" translate="true">Update Time</item>
+               </item>
+           </argument>
+       </column> -->
+
+
+    
+<!-- <actionsColumn name="actions" class="Mageget\Enquire\Ui\Component\Listing\Grid\Column\Action">
+           <argument name="data" xsi:type="array">
+               <item name="config" xsi:type="array">
+                   <item name="resizeEnabled" xsi:type="boolean">true</item>
+                   <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                   <item name="indexField" xsi:type="string">id</item> 
+                   <item name="label" xsi:type="string" translate="true">Update</item>  
+              
+                    <item name="sortOrder" xsi:type="number">40</item>
+               </item>
+           </argument>  
+        </actionsColumn>   -->
+
+
+	<actionsColumn name="actions" class="Mageget\Enquire\Ui\Component\Listing\Grid\Column\Action">
+            <settings>
+                <indexField>news_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+
+
+
+
+
+
+    </columns>
+</listing>

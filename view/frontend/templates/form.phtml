@@ -1,0 +1,76 @@
+<center><h2>Enquire Form</h2></center>
+<hr width="100px">
+<div id="custom-form">
+  <form class="form contact" action="
+		<?php echo $this->getUrl('enquire/form/save',['_secure'=>true]); ?>" id="custom-form" method="post" data-hasrequired="
+		<?php echo __('* Required Fields') ?>" enctype="multipart/form-data" data-mage-init='{"validation":{}}'>
+    <div class="field name required">
+      <label class="label" for="name">
+        <span> <?php  echo __('Name') ?> </span>
+      </label>
+      <div class="control">
+        <input name="name" id="name" title="<?php  echo __('Name') ?>" class="input-text" type="text" data-validate="{required:true}" />
+      </div>
+      <div class="field email required">
+        <label class="label" for="email">
+          <span> <?php  echo __('Email') ?> </span>
+        </label>
+        <div class="control">
+          <input name="email" id="email" title="<?php  echo __('Email') ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}" />
+        </div>
+      </div>
+      <div class="field phonenumber">
+        <label class="label" for="phonenumber">
+          <span> <?php  echo __('Phone Number') ?> </span>
+        </label>
+        <div class="control">
+          <input name="phonenumber" id="phonenumber" title="<?php  echo __('Phone Number') ?>" value="" class="input-text" type="text" data-validate="{required:true,'validate-number':true,'phoneUS':true}"  />
+        </div>
+      </div> 
+
+      <div class="field dob">
+        <label class="label" for="dob">
+          <span> <?php  echo __('dob') ?> </span>
+        </label>
+        <div class="control">
+          <input name="dob" id="dob" title="<?php  echo __('Date of Birth') ?>" value="" class="input-date" type="date" data-validate="{required:true}"/>
+        </div>
+      </div> 
+
+      <br/>
+      <div class="field ChooseProfileImage">
+        <label class="label" for="Choose Profile Image">
+          <span> <?php  echo __('Choose Profile Image') ?> </span>
+        </label><br/>
+        <div class="control">
+        <input type="file" name="upload_file" id="file-upload" data-validate="{required:true}"/>
+        </div>
+      </div>
+
+
+
+      <div class="actions-toolbar"> 
+
+
+    
+
+
+ <br/>
+ <div class="primary">
+
+ 
+
+     <button type="submit" title="<?php  echo __('Submit') ?>" class="action submit primary" id="custom_btn">
+
+         <span><?php  echo __('Submit') ?></span>
+
+     </button>
+
+ </div>
+
+</div>
+
+  </form>
+</div>
+
+
